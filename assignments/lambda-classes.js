@@ -17,8 +17,6 @@ const newPerson = new Person ({
   location: "Live Oak, CA"
 })
 
-console.log(newPerson.speak());
-
 class Instructor extends Person {
   constructor(instructorAttributes) {
     super(instructorAttributes);
@@ -32,6 +30,11 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student} receives a perfect score on ${subject}!`;
   }
+  grading(student) {
+    let studentGrade = student.grade
+    const randomNumber = Math.floor(Math.random() * 20)
+    return `${student.name}'s grade is ${studentGrade += randomNumber}`;
+  }
 }
 
 const testInstructor =  new Instructor ({
@@ -43,8 +46,6 @@ const testInstructor =  new Instructor ({
   catchPhrase: "Coding is cool!"
 });
 
-console.log(testInstructor.demo("CSS"));
-console.log(testInstructor.grade("Bob", "CSS"));
 
 class Student extends Person {
   constructor(studentAttributes){
@@ -74,12 +75,9 @@ const testStudent = new Student ({
   favLanguage: "Javascript",
   catchPhrase: "My brain hurts!",
   className: "WEBPT7",
-  favSubjects: ["HTML", "CSS", "Javascript"]
+  favSubjects: ["HTML", "CSS", "Javascript"],
+  grade: 42
 });
-
-testStudent.listsSubjects();
-console.log(testStudent.PRAssignment("Preprocessing II"))
-console.log(testStudent.sprintChallenge("Javascript Fundamentals"));
 
 class ProjectManagers extends Instructor {
   constructor(pmAttributes){
@@ -105,5 +103,13 @@ const testPM = new ProjectManagers ({
   gradClassname: "WEB1",
   favInstructor: "Best Instructor"
 });
+
+console.log(newPerson.speak());
+console.log(testInstructor.grading(testStudent));
+console.log(testInstructor.demo("CSS"));
+console.log(testInstructor.grade("Bob", "CSS"));
+testStudent.listsSubjects();
+console.log(testStudent.PRAssignment("Preprocessing II"))
+console.log(testStudent.sprintChallenge("Javascript Fundamentals"));
 console.log(testPM.standUp("WEBPT7_Rad PM"));
 console.log(testPM.debugCode( "Billy", "JavaScript"));
